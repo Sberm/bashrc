@@ -1,3 +1,17 @@
+if [[ $TMUX ]]; then
+	alias clear='clear && tmux clear-history'
+fi
+
+export gmail_pass="pmdf eplw fome sunx"
+
+frp() {
+	cd /root/hw/frp_0.52.1_linux_amd64 && ./frps -c frps.toml &
+}
+
+# terminal cursor shape
+# results in sftp to be unusable
+# echo -ne "\e[1 q"
+
 alias fg="perf script > out.perf && ./stackcollapse-perf.pl out.perf > perf.col && ./flamegraph.pl perf.col > 1001.svg && cp 1001.svg ~/hw/sberf/"
 
 # copying sym.h shortcut
@@ -42,9 +56,11 @@ export ELIXIR_ERL_OPTIONS="+fnu"
 alias e="exit"
 
 # quick print ram usage
-alias pr=print_ram
-print_ram() {
-	ps aux | sort -rnk 4 | head -20 | awk '{print $2" "$4 * 1800 / 100"MB "$11" "$12" "$13}'
+pr() {
+	ps aux | sort -rnk 4 | head -20 | awk '{comm_str=$11" "$12" "$13; \
+						mem=$4*1800/100; \
+						printf "%-7d %-5s%s  %-42s\n", \
+						$2, mem, "MB", comm_str;}'
 }
 
 # go
@@ -78,3 +94,5 @@ alias ts="transgender 2>/tmp/trans && cd \"\`tail -n 1 /tmp/trans\`\""
 
 # starship
 # eval "$(starship init bash)"
+alias ts="transgender 2>/tmp/trans && cd \"\`tail -n 1 /tmp/trans\`\""
+alias ts="transgender 2>/tmp/trans && cd \"\`tail -n 1 /tmp/trans\`\""
