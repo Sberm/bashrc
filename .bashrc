@@ -1,3 +1,7 @@
+server() {
+	ssh root@sberm.cn
+}
+
 if [[ $TMUX ]]; then
 	alias clear='clear && tmux clear-history'
 fi
@@ -90,9 +94,4 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 . "$HOME/.cargo/env"
-alias ts="transgender 2>/tmp/trans && cd \"\`tail -n 1 /tmp/trans\`\""
-
-# starship
-# eval "$(starship init bash)"
-alias ts="transgender 2>/tmp/trans && cd \"\`tail -n 1 /tmp/trans\`\""
 alias ts="transgender 2>/tmp/trans && cd \"\`tail -n 1 /tmp/trans\`\""
