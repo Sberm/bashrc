@@ -1,3 +1,7 @@
+function ts() {
+  cd $(transgender 3>&1 1>&2 2>&3 3>&- | tail -n 1)
+}
+
 server() {
 	ssh root@sberm.cn
 }
@@ -94,4 +98,3 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 . "$HOME/.cargo/env"
-alias ts="transgender 2>/tmp/trans && cd \"\`tail -n 1 /tmp/trans\`\""
