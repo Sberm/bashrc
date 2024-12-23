@@ -34,11 +34,9 @@ export FZF_CTRL_T_OPTS="
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 alias vim="nvim"
-
-# e -> exit
 alias e="exit"
 
-# quick print ram usage
+# simple ram usage
 pr() {
   ps aux | sort -rnk 4 | head -20 | awk '{comm_str=$11" "$12" "$13; \
             mem=$4*1800/100; \
@@ -46,22 +44,20 @@ pr() {
             $2, mem, "MB", comm_str;}'
 }
 
-move_to_trash() {
-    mv $1 /root/.Trash
+# move to trash can
+tsh() {
+    mv -f $1 /root/.Trash
 }
-alias tsh=move_to_trash
 
-# User bash prompt
+# user bash prompt
 export PS1="\W $ "
 
 alias rm='rm -i'
 alias cp='cp -i'
 
-# Source global definitions
+# global definitions
 if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 . "$HOME/.cargo/env"
