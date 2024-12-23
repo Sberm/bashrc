@@ -1,7 +1,20 @@
-# Transgender.rs
-function ts() {
-  cd "$(transgender 3>&1 1>&2 2>&3 3>&- | tail -n 1)"
-}
+if [ $TMUX ]; then
+  tmux_refresh() {
+    ssh_auth_sock=$(tmux show-environment | grep "^SSH_AUTH_SOCK")
+    if [ -n "${ssh_auth_sock}" ]; then
+      export "${ssh_auth_sock}"
+    fi
+
+    display=$(tmux show-environment | grep "^DISPLAY")
+    if [ -n "${display}" ]; then
+      export "${display}"
+    fi
+  }
+fi
+
+alias ls="ls --color=auto"
+
+eval "$(transgender --sh)"
 
 server() {
   ssh root@sberm.cn
@@ -38,6 +51,7 @@ move_to_trash() {
 }
 alias tsh=move_to_trash
 
+# User bash prompt
 export PS1="\W $ "
 
 alias rm='rm -i'
@@ -48,5 +62,6 @@ if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
 
-# cargo
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 . "$HOME/.cargo/env"
