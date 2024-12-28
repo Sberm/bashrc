@@ -24,8 +24,6 @@ if [[ $TMUX ]]; then
   alias clear='clear && tmux clear-history'
 fi
 
-export gmail_pass="pmdf eplw fome sunx"
-
 # fzf
 export FZF_CTRL_T_OPTS="
   --preview 'cat {}'
@@ -51,9 +49,6 @@ tsh() {
 
 # user bash prompt
 export PS1="\W $ "
-
-alias rm='rm -i'
-alias cp='cp -i'
 
 # global definitions
 if [ -f /etc/bashrc ]; then
