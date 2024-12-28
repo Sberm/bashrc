@@ -59,5 +59,3 @@ alias cp='cp -i'
 if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
-
-. "$HOME/.cargo/env"
