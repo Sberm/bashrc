@@ -17,7 +17,7 @@ alias ls="ls --color=auto"
 eval "$(transgender --sh)"
 
 server() {
-  ssh root@sberm.cn
+  ssh -Y root@sberm.cn
 }
 
 if [[ $TMUX ]]; then
