@@ -30,7 +30,11 @@ function pr() {
 
 # move to trash can
 function tsh() {
-    mv -f $@ /root/.Trash
+  TSH="$HOME/.Trash"
+  if [ ! -d $TSH ]; then
+    mkdir $TSH
+  fi
+  mv -f $@ $TSH
 }
 
 # user bash prompt
