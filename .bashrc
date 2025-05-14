@@ -1,23 +1,29 @@
+# colorful ls
 alias ls="ls --color=auto"
 
-eval "$(transgender --sh)"
+# transgender shell settings
+TRANS="transgender"
+if command -v $TRANS 2>&1 >/dev/null; then
+  eval "$($TRANS --sh)"
+fi
 
+# remote server
 function server() {
   ssh -Y root@sberm.cn
 }
 
+# tmux clear that clears the scroll buffer
 if [[ $TMUX ]]; then
   alias clear='clear && tmux clear-history'
 fi
 
 # fzf
-export FZF_CTRL_T_OPTS="
-  --preview 'cat {}'
-  --bind 'ctrl-p:change-preview-window(hidden|)'"
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# let's use neovim
 alias vim="nvim"
+
+# quick exit
 alias e="exit"
 
 # simple ram usage
